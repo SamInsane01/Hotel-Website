@@ -1,0 +1,485 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Horizon Hotel</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #263238;
+            background: #f7f7f4;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #102a2a;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #e8c879;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #e8c879;
+        }
+
+        .hero {
+            min-height: 480px;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.52),
+                rgba(0, 0, 0, 0.52)),
+                url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=85")
+                center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 5vw, 56px);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d6ad55;
+            color: #142626;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #f0d48f;
+        }
+
+        section {
+            padding: 55px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #102a2a;
+        }
+
+        .section-title p {
+            color: #66716f;
+        }
+
+        .rooms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .room-info {
+            padding: 20px;
+        }
+
+        .room-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: #99701e;
+            font-size: 21px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        .about {
+            background: #e9efeb;
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .service {
+            padding: 25px 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .service span {
+            font-size: 35px;
+        }
+
+        .booking {
+            background: #102a2a;
+            color: white;
+        }
+
+        .booking .section-title h2 {
+            color: #e8c879;
+        }
+
+        .booking-form {
+            max-width: 650px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5d1;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .booking-form .btn {
+            width: 100%;
+        }
+
+        #booking-message {
+            text-align: center;
+            margin-top: 20px;
+            color: #f0d48f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #091d1d;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 14px;
+            }
+
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Grand Horizon</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#rooms">Rooms</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#booking">Book Now</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div>
+                <h1>Experience Luxury & Comfort</h1>
+                <p>Your perfect stay begins at Grand Horizon Hotel.</p>
+                <a href="#booking" class="btn">Reserve Your Stay</a>
+            </div>
+        </section>
+
+        <section id="rooms">
+            <div class="section-title">
+                <h2>Our Rooms & Suites</h2>
+                <p>Choose the perfect room for your next stay.</p>
+            </div>
+
+            <div class="rooms">
+                <article class="room-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=80"
+                        alt="Comfortable standard hotel room">
+
+                    <div class="room-info">
+                        <h3>Deluxe Room</h3>
+                        <p>A comfortable room for a relaxing stay.</p>
+                        <div class="price">₹3,500 / night</div>
+                        <a href="#booking" class="btn">Book Room</a>
+                    </div>
+                </article>
+
+                <article class="room-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80"
+                        alt="Premium hotel suite">
+
+                    <div class="room-info">
+                        <h3>Premium Suite</h3>
+                        <p>Extra space and premium amenities.</p>
+                        <div class="price">₹6,000 / night</div>
+                        <a href="#booking" class="btn">Book Room</a>
+                    </div>
+                </article>
+
+                <article class="room-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=900&q=80"
+                        alt="Luxury hotel bedroom">
+
+                    <div class="room-info">
+                        <h3>Luxury Suite</h3>
+                        <p>An elegant experience for special occasions.</p>
+                        <div class="price">₹9,000 / night</div>
+                        <a href="#booking" class="btn">Book Room</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="section-title">
+                <h2>Welcome to Grand Horizon</h2>
+            </div>
+
+            <p>
+                Enjoy exceptional hospitality, elegant rooms, delicious food,
+                and personalized service. Whether you are travelling for
+                business or leisure, we aim to make every stay memorable.
+            </p>
+        </section>
+
+        <section id="services">
+            <div class="section-title">
+                <h2>Hotel Facilities</h2>
+                <p>Everything you need for a comfortable stay.</p>
+            </div>
+
+            <div class="services">
+                <div class="service">
+                    <span>🍽️</span>
+                    <h3>Restaurant</h3>
+                    <p>Delicious meals and refreshments.</p>
+                </div>
+
+                <div class="service">
+                    <span>🏊</span>
+                    <h3>Swimming Pool</h3>
+                    <p>Relax and refresh yourself.</p>
+                </div>
+
+                <div class="service">
+                    <span>📶</span>
+                    <h3>Free Wi-Fi</h3>
+                    <p>Stay connected during your visit.</p>
+                </div>
+
+                <div class="service">
+                    <span>🚗</span>
+                    <h3>Parking</h3>
+                    <p>Convenient guest parking.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking" id="booking">
+            <div class="section-title">
+                <h2>Book Your Stay</h2>
+                <p>Send us your preferred dates and room type.</p>
+            </div>
+
+            <form class="booking-form" id="hotel-booking-form">
+                <div class="form-group">
+                    <label for="guest-name">Full Name</label>
+                    <input
+                        type="text"
+                        id="guest-name"
+                        placeholder="Enter your name"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="guest-email">Email Address</label>
+                    <input
+                        type="email"
+                        id="guest-email"
+                        placeholder="Enter your email"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="check-in">Check-in Date</label>
+                    <input type="date" id="check-in" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="check-out">Check-out Date</label>
+                    <input type="date" id="check-out" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="room-type">Room Type</label>
+                    <select id="room-type" required>
+                        <option value="">Select a room</option>
+                        <option value="Deluxe Room">Deluxe Room</option>
+                        <option value="Premium Suite">Premium Suite</option>
+                        <option value="Luxury Suite">Luxury Suite</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <select id="guests" required>
+                        <option value="1">1 Guest</option>
+                        <option value="2" selected>2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                    </select>
+                </div>
+
+                <div class="form-group full">
+                    <button type="submit" class="btn">
+                        Submit Booking Request
+                    </button>
+                </div>
+            </form>
+
+            <p id="booking-message" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Grand Horizon Hotel. All rights reserved.</p>
+        <p>Luxury • Comfort • Hospitality</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById("hotel-booking-form");
+        const checkIn = document.getElementById("check-in");
+        const checkOut = document.getElementById("check-out");
+        const message = document.getElementById("booking-message");
+
+        const today = new Date();
+        const localToday = new Date(
+            today.getTime() - today.getTimezoneOffset() * 60000
+        ).toISOString().split("T")[0];
+
+        checkIn.min = localToday;
+        checkOut.min = localToday;
+
+        checkIn.addEventListener("change", function () {
+            checkOut.min = checkIn.value || localToday;
+
+            if (checkOut.value && checkOut.value <= checkIn.value) {
+                checkOut.value = "";
+            }
+        });
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (checkIn.value < localToday ||
+                checkOut.value <= checkIn.value) {
+                message.textContent =
+                    "Please select valid check-in and check-out dates.";
+                return;
+            }
+
+            const guestName =
+                document.getElementById("guest-name").value;
+            const roomType =
+                document.getElementById("room-type").value;
+
+            message.textContent =
+                "Thank you, " + guestName +
+                "! Your " + roomType +
+                " booking request has been checked in this demo. " +
+                "No actual reservation has been created.";
+
+            form.reset();
+            checkOut.min = localToday;
+        });
+    </script>
+
+</body>
+</html>
+```
